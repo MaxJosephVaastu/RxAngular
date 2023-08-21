@@ -1,0 +1,51 @@
+<div class="data--container mat-elevation-z8">
+    <div class="data--loading-shade" *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+
+    <div class="data--table-container">
+
+        <table mat-table [dataSource]="data" class="data--table" matSort>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="job">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Job</th>
+                <td mat-cell *matCellDef="let row">{{row.job}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let row">{{row.name}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="rating">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                    Rating
+                </th>
+                <td mat-cell *matCellDef="let row">{{row.rating}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="account">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                    Account
+                </th>
+                <td mat-cell *matCellDef="let row">{{row.account}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="company">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                    Company
+                </th>
+                <td mat-cell *matCellDef="let row">{{row.company}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <mat-paginator [length]="resultsLength" [pageSize]="10" aria-label="Select page"></mat-paginator>
+</div>
